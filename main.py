@@ -55,16 +55,18 @@ def round(player1, player2, x):
         print("Nouveau round !")
         player1.hit(player2)
         player2.hit(player1)
-        print(" PV du 1er joueur : ", player1.getHp(),
-              "\n PV du 2e joueur  : ", player2.getHp())
+        print(" PV du joueur ", player1, ": ", player1.getHp(),
+              "\n PV du 2e joueur ", player2, ": ", player2.getHp())
 
         print("Fin du round ", x, " : ", end="")
         if player1.est_mort() and player2.est_mort():
             print("égalite, les deux joueurs sont morts en même temps")
         elif player1.est_mort():
-            print("le joueur 1 est mort. Le joueur 2 l'emporte.")
+            print("le joueur ", player1, " est mort. Le joueur", player2,
+                  "l'emporte.")
         elif player2.est_mort():
-            print("le joueur 2 est mort. Le joueur 1 l'emporte.")
+            print("le joueur ", player2, " est mort. Le joueur", player1,
+                  "l'emporte.")
         else:
             print("les deux joueurs sont toujours en vie.")
         print("")
@@ -111,7 +113,11 @@ def combat_rec(player1, player2, x=0):
 
 
 def creer_perso(nom_du_personnage):
-    input("Vous allez maintenant répartir 260points (press 'ok')")
+    input("Vous allez maintenant répartir 260points",
+          "\n Entre 10 et 50 points d'attaque",
+          "\n Entre 150 et 250 points d'attaque",
+          "\n Entre 0 et 30 points d'attaque",
+          "\n Entre 0 et 25 points d'attaque")
     atk = int(
         input("Choississz votre nombre de points d'attaque (10 à 50) : "))
     hp = int(input("Choississez votre nombre de points de vie (150 à 250) : "))
