@@ -74,19 +74,10 @@ def round(player1, player2, x):
         return 0
 
 
-def combat(player1, player2):
-    assert player1.hp > 0 and player2.hp > 0
-    x = 0
-    while player1.est_vivant() and player2.est_vivant:
-        x += 1
-        round(player1, player2, x)
-    player1.revive(), player2.revive()
-
-
-def combat_rec(player1, player2, x=0):
+def fight(player1, player2, x=0):
     round(player1, player2, x)
     if player1.est_vivant() and player2.est_vivant():
-        combat_rec(player1, player2, x + 1)
+        fight(player1, player2, x + 1)
     else:
         player1.revive(), player2.revive()
 
@@ -112,7 +103,7 @@ def combat_rec(player1, player2, x=0):
 # Creation de son personnage
 
 
-def creer_perso(nom_du_personnage):
+def create_character(nom_du_personnage):
     input("Vous allez maintenant répartir 260points",
           "\n Entre 10 et 50 points d'attaque",
           "\n Entre 150 et 250 points d'attaque",
